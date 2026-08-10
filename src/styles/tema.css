@@ -1,0 +1,276 @@
+/* =====================================================
+   Sistema de temas: variables para oscuro y claro.
+   Se cambia con  <html data-tema="oscuro | claro">.
+   Acento esmeralda (identidad de farmacia).
+   ===================================================== */
+
+:root {
+  --radio: 12px;
+  --radio-chico: 8px;
+  --fuente: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  --sombra: 0 6px 20px rgba(0, 0, 0, 0.18);
+  --transicion: 160ms ease;
+  --ancho-sidebar: 248px;
+}
+
+/* ---------- TEMA OSCURO ---------- */
+html[data-tema="oscuro"] {
+  --fondo-app: #171f2b;
+  --fondo-panel: #1f2836;
+  --fondo-panel-2: #26313f;
+  --fondo-sidebar: #1b2330;
+  --borde: #2c3646;
+  --texto: #e7ecf3;
+  --texto-tenue: #8a97a8;
+  --acento: #10b981;
+  --acento-hover: #0ea371;
+  --acento-suave: rgba(16, 185, 129, 0.14);
+  --azul: #3b82f6;
+  --azul-suave: rgba(59, 130, 246, 0.14);
+  --exito: #22c55e;
+  --exito-suave: rgba(34, 197, 94, 0.16);
+  --peligro: #ef4444;
+  --peligro-suave: rgba(239, 68, 68, 0.16);
+  --alerta: #f59e0b;
+  --alerta-suave: rgba(245, 158, 11, 0.16);
+}
+
+/* ---------- TEMA CLARO ---------- */
+html[data-tema="claro"] {
+  --fondo-app: #f4f6fb;
+  --fondo-panel: #ffffff;
+  --fondo-panel-2: #f1f4f9;
+  --fondo-sidebar: #ffffff;
+  --borde: #e4e9f2;
+  --texto: #1f2a37;
+  --texto-tenue: #6b7688;
+  --acento: #0d9f6e;
+  --acento-hover: #0b8a5f;
+  --acento-suave: rgba(13, 159, 110, 0.12);
+  --azul: #2f6fed;
+  --azul-suave: rgba(47, 111, 237, 0.12);
+  --exito: #16a34a;
+  --exito-suave: rgba(22, 163, 74, 0.12);
+  --peligro: #dc2626;
+  --peligro-suave: rgba(220, 38, 38, 0.1);
+  --alerta: #d97706;
+  --alerta-suave: rgba(217, 119, 6, 0.12);
+  --sombra: 0 6px 20px rgba(31, 42, 55, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente);
+  background: var(--fondo-app);
+  color: var(--texto);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--transicion), color var(--transicion);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Barra de scroll discreta */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--borde);
+  border-radius: 20px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radio-chico);
+  padding: 9px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transicion);
+  background: var(--fondo-panel-2);
+  color: var(--texto);
+}
+.btn:hover {
+  filter: brightness(1.06);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-primario {
+  background: var(--acento);
+  color: #fff;
+}
+.btn-primario:hover {
+  background: var(--acento-hover);
+  filter: none;
+}
+.btn-borde {
+  background: transparent;
+  border-color: var(--borde);
+  color: var(--texto-tenue);
+}
+.btn-peligro {
+  background: transparent;
+  border-color: var(--peligro);
+  color: var(--peligro);
+}
+.btn-peligro:hover {
+  background: var(--peligro);
+  color: #fff;
+  filter: none;
+}
+.btn-icono {
+  padding: 8px;
+  background: transparent;
+  color: var(--texto-tenue);
+  border-radius: var(--radio-chico);
+}
+.btn-icono:hover {
+  background: var(--fondo-panel-2);
+  color: var(--texto);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Formularios ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.campo label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-tenue);
+}
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radio-chico);
+  border: 1px solid var(--borde);
+  background: var(--fondo-panel-2);
+  color: var(--texto);
+  font-size: 14px;
+  font-family: inherit;
+  transition: var(--transicion);
+}
+.campo input:focus,
+.campo select:focus {
+  outline: none;
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px var(--acento-suave);
+}
+.campo .obligatorio {
+  color: var(--peligro);
+}
+
+/* Interruptor (switch) para booleanos, hecho a mano */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+.switch input {
+  display: none;
+}
+.switch .pista {
+  position: absolute;
+  inset: 0;
+  background: var(--borde);
+  border-radius: 20px;
+  transition: var(--transicion);
+}
+.switch .bolita {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: var(--transicion);
+}
+.switch input:checked + .pista {
+  background: var(--acento);
+}
+.switch input:checked + .pista .bolita {
+  transform: translateX(20px);
+}
+
+/* ---------- Insignias de estado ---------- */
+.insignia {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+.insignia.activo {
+  color: var(--exito);
+  background: var(--exito-suave);
+}
+.insignia.inactivo {
+  color: var(--texto-tenue);
+  background: var(--fondo-panel-2);
+}
+.insignia.alerta {
+  color: var(--alerta);
+  background: var(--alerta-suave);
+}
+
+/* ---------- Tarjeta / panel ---------- */
+.panel {
+  background: var(--fondo-panel);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+/* Utilidad de animacion suave al entrar */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.aparece {
+  animation: aparecer 220ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
